@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * This function gets called when the Delete Button is clicked. It
-     * delete selected todo feom the database.
+     * delete selected todo from the database.
      * @param view MainActivity view
      */
     fun deleteTodo(view: View?){
