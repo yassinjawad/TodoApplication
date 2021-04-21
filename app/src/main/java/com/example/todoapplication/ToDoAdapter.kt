@@ -53,11 +53,34 @@ class ToDoAdapter (
             // assign the isChecked value in the current item to isChecked
             // attribute of CheckBox
             todoCheckBox!!.isChecked = currentToDo.isChecked
+
+            // tell Kotlin that checkBox isn't null
+            // set onCheckedChangeList
+            todoCheckBox!!.setOnCheckedChangeListener { _, _ ->
+                // reverse the value in the isChecked field of the current ToDo
+                currentToDo.isChecked = !currentToDo.isChecked
+            }
         }
     }
 
+    /**
+     * Returns the number of items in the MutableList of ToDos
+     */
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return todos.size
+    }
+
+    /**
+     * This method gets called by the addToDo method in the NainActivity
+     * when the add button is clicked. It will call the DBHandler method
+     *
+     */
+    fun addToDo(dbHandler: DBHandler, name: String){
+        // ask Kotlin to check if the dbHandler is null
+        // if it isn't, call its addToDo method passing
+        // specified ToDo name
+        dbHandler?.addTodo(name)
+        notifyDataSetChanged()
     }
 
 
